@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+	<servlet>
+		<servlet-name>CreationClient</servlet-name>
+		<servlet-class>com.filrouge.first.CreationClient</servlet-class>
+		<init-param>
+			<param-name>chemin</param-name>
+			<param-value>/fichiers/</param-value>
+		</init-param>		
+  		<multipart-config>
+  			<location>D:/fichiers</location>
+  			<max-file-size>10240</max-file-size>
+  			<max-request-size>10240</max-request-size>
+  			<file-size-threshold>10240</file-size-threshold>
+  		</multipart-config>	 			
+	</servlet>
+	<servlet>
+		<servlet-name>CreationCommande</servlet-name>
+		<servlet-class>com.filrouge.first.CreationCommande</servlet-class>
+		<init-param>
+			<param-name>chemin</param-name>
+			<param-value>/fichiers/</param-value>
+		</init-param>
+  		<multipart-config>
+  			<location>D:/fichiers</location>
+  			<max-file-size>10240</max-file-size>
+  			<max-request-size>10240</max-request-size>
+  			<file-size-threshold>10240</file-size-threshold>
+  		</multipart-config>	 			
+	</servlet>	
+	<servlet>
+		<servlet-name>ListerClients</servlet-name>
+		<servlet-class>com.filrouge.first.ListerClients</servlet-class>
+	</servlet>	
+	<servlet>
+		<servlet-name>ListerCommande</servlet-name>
+		<servlet-class>com.filrouge.first.ListerCommande</servlet-class>
+	</servlet>	
+	<servlet>
+		<servlet-name>SupprimerClient</servlet-name>
+		<servlet-class>com.filrouge.first.SupprimerClient</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>SupprimerCommande</servlet-name>
+		<servlet-class>com.filrouge.first.SupprimerCommande</servlet-class>
+	</servlet>					
+  <servlet>
+  <servlet-name>DownloadImage</servlet-name>
+  	<servlet-class>com.filrouge.first.DownloadImage</servlet-class>  
+	<init-param>
+		<param-name>chemin</param-name> 
+		<param-value>/fichiers/</param-value> 
+	</init-param>   		
+  </servlet>  	
+	<servlet-mapping>
+		<servlet-name>CreationClient</servlet-name>
+		<url-pattern>/creationClient</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CreationCommande</servlet-name>
+		<url-pattern>/creationCommande</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListerClients</servlet-name>
+		<url-pattern>/listerClients</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListerCommande</servlet-name>
+		<url-pattern>/listerCommande</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SupprimerClient</servlet-name>
+		<url-pattern>/supprimerClient</url-pattern>
+	</servlet-mapping>	
+	<servlet-mapping>
+		<servlet-name>SupprimerCommande</servlet-name>
+		<url-pattern>/supprimerCommande</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DownloadImage</servlet-name>
+		<url-pattern>/downloadImage/*</url-pattern>
+	</servlet-mapping>						
+
+<filter>
+    <filter-name>Set Character Encoding</filter-name>
+    <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+    <init-param>
+        <param-name>encoding</param-name>
+        <param-value>UTF-8</param-value>
+    </init-param>
+    <init-param>
+        <param-name>ignore</param-name>
+        <param-value>false</param-value>
+    </init-param>
+</filter>
+<filter>
+    <filter-name>Set Liste</filter-name>
+    <filter-class>com.filrouge.filter.SetListe</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>Set Character Encoding</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+<filter-mapping>
+    <filter-name>Set Liste</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+
+<listener>
+	<listener-class>com.filrouge.config.InitialisationDaoFactory</listener-class>
+</listener>
+	
+	
+	
+ 	<jsp-config>
+  		<jsp-property-group>
+  			<url-pattern>*.jsp</url-pattern>
+  			<include-prelude>/WEB-INF/taglibs.jsp</include-prelude>
+  		</jsp-property-group>
+  	</jsp-config>	
+</web-app>
