@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +16,6 @@ import com.filrouge.beans.Client;
 import com.filrouge.beans.Commande;
 import com.filrouge.dao.ClientDao;
 import com.filrouge.dao.CommandeDao;
-import com.filrouge.dao.DAOFactory;
 import com.filrouge.forms.CreationCommandeForm;
 
 @WebServlet(name = "CreationCommande", urlPatterns = "/creationCommande")
@@ -29,13 +29,10 @@ public class CreationCommande extends HttpServlet {
 	private static final String	SESSION_CLIENT		= new String("liste_client");
 	private static final String	CONF_DAO_FACTORY	= new String("daoFactory");
 
+	@EJB
 	private ClientDao			clientDao;
+	@EJB
 	private CommandeDao			commandeDao;
-
-	public void init() {
-		this.clientDao = ((DAOFactory) getServletContext().getAttribute(CONF_DAO_FACTORY)).getClientDao();
-		this.commandeDao = ((DAOFactory) getServletContext().getAttribute(CONF_DAO_FACTORY)).getCommandeDao();
-	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.getServletContext().getRequestDispatcher(VUEC).forward(request, response);

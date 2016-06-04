@@ -3,6 +3,7 @@ package com.filrouge.first;
 import java.io.IOException;
 import java.util.Map;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import com.filrouge.beans.Client;
 import com.filrouge.dao.ClientDao;
-import com.filrouge.dao.DAOFactory;
 
 @WebServlet(name = "SupprimerClient", urlPatterns = "/supprimerClient")
 public class SupprimerClient extends HttpServlet {
@@ -21,11 +21,8 @@ public class SupprimerClient extends HttpServlet {
 	private static final String	LISTE_CLIENT		= new String("/listerClients");
 	private static final String	CONF_DAO_FACTORY	= new String("daoFactory");
 
+	@EJB
 	private ClientDao			clientDao;
-
-	public void init() {
-		this.clientDao = ((DAOFactory) getServletContext().getAttribute(CONF_DAO_FACTORY)).getClientDao();
-	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();

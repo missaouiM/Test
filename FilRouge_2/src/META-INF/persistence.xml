@@ -3,10 +3,11 @@
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
  http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-	<persistence-unit name ="formation_PU" transaction-type ="JTA">
+	<persistence-unit name ="filrouge_PU" transaction-type ="JTA">
 	
-		<jta-data-source>jdbc/bonecp_resource</jta-data-source>
-		<class>com.pro_jpa.bean.Utilisateur</class>
+		<jta-data-source>jdbc/bonecp_resource_tp</jta-data-source>
+		<class>com.filrouge.beans.Client</class>
+		<class>com.filrouge.beans.Commande</class>
 		<properties>
             <property name="eclipselink.logging.level.sql" value="FINE"/>
             <property name="eclipselink.logging.parameters" value="true"/>

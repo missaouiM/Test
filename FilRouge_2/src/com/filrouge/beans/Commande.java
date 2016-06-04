@@ -1,13 +1,39 @@
 package com.filrouge.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.eclipse.persistence.annotations.Convert;
+import org.eclipse.persistence.annotations.Converter;
+
+import com.filrouge.tools.JodaDateTimeConverter;
+
+@Entity
+@Table(name = "commande")
 public class Commande {
 	private String	montant;
 	private String	modePaiement;
 	private String	statutPaiement;
 	private String	modeLivraison;
 	private String	statutLivraison;
+
+	@JoinColumn(name = "id_client")
+	@ManyToOne(optional = false)
 	private Client	client;
+
+	@Column(name = "dateCreation", columnDefinition = "TIMESTAMP")
+	@Converter(name = "dateTimeConverter", converterClass = JodaDateTimeConverter.class)
+	@Convert("dateTimeConverter")
 	private String	date;
+	@Column(name = "id_commande")
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long	id;
 
 	public String getMontant() {

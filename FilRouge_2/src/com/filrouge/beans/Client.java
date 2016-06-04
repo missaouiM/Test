@@ -1,12 +1,24 @@
 package com.filrouge.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "client")
 public class Client {
 	private String	nom;
 	private String	prenom;
 	private String	adresseLivraison;
+	@Column(name = "numeroTelephone")
 	private String	numTel;
 	private String	adresseMail;
 	private String	nomImage;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long	id;
 
 	public String getNom() {

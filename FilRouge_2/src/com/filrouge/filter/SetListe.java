@@ -5,12 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.ejb.EJB;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -18,14 +20,15 @@ import com.filrouge.beans.Client;
 import com.filrouge.beans.Commande;
 import com.filrouge.dao.ClientDao;
 import com.filrouge.dao.CommandeDao;
-import com.filrouge.dao.DAOFactory;
 
+@WebFilter(urlPatterns = "/*")
 public class SetListe implements Filter {
-	private static final String	CONF_DAO_FACTORY		= "daoFactory";
 	private static final String	ATT_SESSION_CLIENT		= "liste_client";
 	private static final String	ATT_SESSION_COMMANDE	= "liste_commande";
 
+	@EJB
 	private ClientDao			clientDao;
+	@EJB
 	private CommandeDao			commandeDao;
 
 	@Override
@@ -61,8 +64,6 @@ public class SetListe implements Filter {
 
 	@Override
 	public void init(FilterConfig config) throws ServletException {
-		this.clientDao = ((DAOFactory) config.getServletContext().getAttribute(CONF_DAO_FACTORY)).getClientDao();
-		this.commandeDao = ((DAOFactory) config.getServletContext().getAttribute(CONF_DAO_FACTORY)).getCommandeDao();
 	}
 
 }

@@ -41,18 +41,7 @@
 		<url-pattern>/downloadImage/*</url-pattern>
 	</servlet-mapping>						
 
-<filter>
-    <filter-name>Set Liste</filter-name>
-    <filter-class>com.filrouge.filter.SetListe</filter-class>
-</filter>
-<filter-mapping>
-    <filter-name>Set Liste</filter-name>
-    <url-pattern>/*</url-pattern>
-</filter-mapping>
 
-<listener>
-	<listener-class>com.filrouge.config.InitialisationDaoFactory</listener-class>
-</listener>
 	
 	
 	

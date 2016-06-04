@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import com.filrouge.beans.Client;
 import com.filrouge.dao.ClientDao;
-import com.filrouge.dao.DAOFactory;
 import com.filrouge.forms.CreationClientForm;
 
 @WebServlet(name = "CreationClient", urlPatterns = "/creationClient")
@@ -26,11 +26,8 @@ public class CreationClient extends HttpServlet {
 	private static final String	ATT_CHEMIN			= new String("chemin");
 	private static final String	CONF_DAO_FACTORY	= new String("daoFactory");
 
+	@EJB
 	private ClientDao			clientDao;
-
-	public void init() {
-		this.clientDao = ((DAOFactory) getServletContext().getAttribute(CONF_DAO_FACTORY)).getClientDao();
-	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

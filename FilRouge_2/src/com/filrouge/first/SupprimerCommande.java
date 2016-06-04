@@ -3,6 +3,7 @@ package com.filrouge.first;
 import java.io.IOException;
 import java.util.Map;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import com.filrouge.beans.Commande;
 import com.filrouge.dao.CommandeDao;
-import com.filrouge.dao.DAOFactory;
 
 @WebServlet(name = "SupprimerCommande", urlPatterns = "/supprimerCommande")
 public class SupprimerCommande extends HttpServlet {
@@ -21,12 +21,8 @@ public class SupprimerCommande extends HttpServlet {
 	private static final String	PARAM_COMMANDE		= new String("commande_supprimer");
 	private static final String	CONF_DAO_FACTORY	= new String("daoFactory");
 
+	@EJB
 	private CommandeDao			commandeDao;
-
-	public void init() {
-		this.commandeDao = ((DAOFactory) getServletContext().getAttribute(CONF_DAO_FACTORY)).getCommandeDao();
-
-	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();

@@ -2,15 +2,60 @@ package com.filrouge.dao;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+
 import com.filrouge.beans.Commande;
 
-public interface CommandeDao {
-	Commande trouver(Long id);
+@Stateless
+public class CommandeDao {
+	private static final String	SQL_SELECT	= "SELECT c FROM Commande c ORDER BY c.id;";
+	@PersistenceContext(unitName = "filrouge_PU")
+	private EntityManager		em;
 
-	List<Commande> lister();
+	public Commande trouver(Long id) {
+		Commande commande = null;
+		try {
+			commande = em.find(Commande.class, id);
 
-	void supprimer(Long id) throws DAOException;
+		} catch (Exception e) {
+			throw new DAOException(e);
+		}
+		return commande;
 
-	void creer(Commande commande) throws DAOException;
+	}
+
+	public List<Commande> lister() {
+
+		try {
+			TypedQuery<Commande> query = em.createQuery(SQL_SELECT, Commande.class);
+			return query.getResultList();
+
+		} catch (Exception e) {
+			throw new DAOException(e);
+		}
+
+	}
+
+	public void supprimer(Long id) throws DAOException {
+		Commande commande = this.trouver(id);
+		try {
+			em.remove(em.merge(commande));
+		} catch (Exception e) {
+			throw new DAOException(e);
+		}
+
+	}
+
+	public void creer(Commande commande) throws DAOException {
+
+		try {
+			em.persist(commande);
+		} catch (Exception e) {
+			throw new DAOException(e);
+		}
+	}
 
 }
