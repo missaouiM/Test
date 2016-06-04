@@ -11,30 +11,31 @@ import javax.persistence.Table;
 
 import org.eclipse.persistence.annotations.Convert;
 import org.eclipse.persistence.annotations.Converter;
+import org.joda.time.DateTime;
 
 import com.filrouge.tools.JodaDateTimeConverter;
 
 @Entity
 @Table(name = "commande")
 public class Commande {
-	private String	montant;
-	private String	modePaiement;
-	private String	statutPaiement;
-	private String	modeLivraison;
-	private String	statutLivraison;
+	private String		montant;
+	private String		modePaiement;
+	private String		statutPaiement;
+	private String		modeLivraison;
+	private String		statutLivraison;
 
 	@JoinColumn(name = "id_client")
 	@ManyToOne(optional = false)
-	private Client	client;
+	private Client		client;
 
 	@Column(name = "dateCreation", columnDefinition = "TIMESTAMP")
 	@Converter(name = "dateTimeConverter", converterClass = JodaDateTimeConverter.class)
 	@Convert("dateTimeConverter")
-	private String	date;
+	private DateTime	date;
 	@Column(name = "id_commande")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long	id;
+	private Long		id;
 
 	public String getMontant() {
 		return montant;
@@ -84,11 +85,11 @@ public class Commande {
 		this.client = client;
 	}
 
-	public String getDate() {
+	public DateTime getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(DateTime date) {
 		this.date = date;
 	}
 

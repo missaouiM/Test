@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 import com.filrouge.beans.Client;
 import com.filrouge.beans.Commande;
@@ -99,11 +97,13 @@ public class CreationCommandeForm {
 
 		}
 		commande.setMontant(montantCommande);
-		String date;
+		DateTime date;
 		DateTime dt = new DateTime();
-		DateTimeFormatter formatter = DateTimeFormat.forPattern(FMT_DT);
-		date = dt.toString(formatter);
-		commande.setDate(date);
+		/*
+		 * DateTimeFormatter formatter = DateTimeFormat.forPattern(FMT_DT); date
+		 * = dt.toString(formatter);
+		 */
+		commande.setDate(dt);
 		try {
 			if (erreurs.isEmpty()) {
 				if (!ANCIEN_CLIENT.equals(boutonNouveau)) {
