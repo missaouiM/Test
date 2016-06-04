@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,7 @@ import com.filrouge.dao.ClientDao;
 import com.filrouge.dao.DAOFactory;
 import com.filrouge.forms.CreationClientForm;
 
+@WebServlet(name = "CreationClient", urlPatterns = "/creationClient")
 public class CreationClient extends HttpServlet {
 	private static final String	VUE					= new String("/WEB-INF/creationClient.jsp");
 	private static final String	VUE_AFF				= new String("/WEB-INF/affichierClient.jsp");

@@ -27,23 +27,7 @@
   			<max-request-size>10240</max-request-size>
   			<file-size-threshold>10240</file-size-threshold>
   		</multipart-config>	 			
-	</servlet>	
-	<servlet>
-		<servlet-name>ListerClients</servlet-name>
-		<servlet-class>com.filrouge.first.ListerClients</servlet-class>
-	</servlet>	
-	<servlet>
-		<servlet-name>ListerCommande</servlet-name>
-		<servlet-class>com.filrouge.first.ListerCommande</servlet-class>
-	</servlet>	
-	<servlet>
-		<servlet-name>SupprimerClient</servlet-name>
-		<servlet-class>com.filrouge.first.SupprimerClient</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>SupprimerCommande</servlet-name>
-		<servlet-class>com.filrouge.first.SupprimerCommande</servlet-class>
-	</servlet>					
+	</servlet>			
   <servlet>
   <servlet-name>DownloadImage</servlet-name>
   	<servlet-class>com.filrouge.first.DownloadImage</servlet-class>  
@@ -52,30 +36,6 @@
 		<param-value>/fichiers/</param-value> 
 	</init-param>   		
   </servlet>  	
-	<servlet-mapping>
-		<servlet-name>CreationClient</servlet-name>
-		<url-pattern>/creationClient</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>CreationCommande</servlet-name>
-		<url-pattern>/creationCommande</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>ListerClients</servlet-name>
-		<url-pattern>/listerClients</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>ListerCommande</servlet-name>
-		<url-pattern>/listerCommande</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>SupprimerClient</servlet-name>
-		<url-pattern>/supprimerClient</url-pattern>
-	</servlet-mapping>	
-	<servlet-mapping>
-		<servlet-name>SupprimerCommande</servlet-name>
-		<url-pattern>/supprimerCommande</url-pattern>
-	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>DownloadImage</servlet-name>
 		<url-pattern>/downloadImage/*</url-pattern>

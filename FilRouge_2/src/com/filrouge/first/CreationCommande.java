@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +18,7 @@ import com.filrouge.dao.CommandeDao;
 import com.filrouge.dao.DAOFactory;
 import com.filrouge.forms.CreationCommandeForm;
 
+@WebServlet(name = "CreationCommande", urlPatterns = "/creationCommande")
 public class CreationCommande extends HttpServlet {
 	private static final String	VUE					= new String("/WEB-INF/affichierCommande.jsp");
 	private static final String	VUEC				= new String("/WEB-INF/creationCommande.jsp");

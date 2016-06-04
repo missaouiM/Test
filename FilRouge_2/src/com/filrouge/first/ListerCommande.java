@@ -3,10 +3,12 @@ package com.filrouge.first;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@WebServlet(name = "ListerCommande", urlPatterns = "/listerCommande")
 public class ListerCommande extends HttpServlet {
 	private static final String	VUE_COMMANDE	= new String("/WEB-INF/listerCommande.jsp");
 

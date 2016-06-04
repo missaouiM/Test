@@ -3,10 +3,12 @@ package com.filrouge.first;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@WebServlet(name = "ListerClients", urlPatterns = "/listerClients")
 public class ListerClients extends HttpServlet {
 	private static final String	VUE_CLIENT	= new String("/WEB-INF/listerClients.jsp");
 

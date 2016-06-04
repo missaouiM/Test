@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +14,7 @@ import com.filrouge.beans.Commande;
 import com.filrouge.dao.CommandeDao;
 import com.filrouge.dao.DAOFactory;
 
+@WebServlet(name = "SupprimerCommande", urlPatterns = "/supprimerCommande")
 public class SupprimerCommande extends HttpServlet {
 	private static final String	SESSION_COMMANDE	= new String("liste_commande");
 	private static final String	LISTE_COMMANDE		= new String("/listerCommande");
